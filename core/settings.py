@@ -15,7 +15,14 @@ SECRET_KEY = 'django-insecure-your-secret-key-here'  # Agar aapki secret key peh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = [
+    'desiger-closet-scf3-bf9pp3njt-maryam-designer55s-projects.vercel.app', 
+    '.vercel.app', 
+    '127.0.0.1', 
+    'localhost'
+]
+
 
 
 # Application definition
