@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - The Designer Closet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            background-color: #fcfbfa; 
+            font-family: 'Montserrat', sans-serif; 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            margin: 0;
+        }
+        .success-card { 
+            background: #ffffff; 
+            padding: 60px 40px; 
+            text-align: center; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03); 
+            max-width: 550px; 
+            width: 100%;
+            border: 1px solid #f1eeea;
+        }
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #888;
+            margin-bottom: 25px;
+        }
+        .checkmark-wrapper {
+            width: 80px;
+            height: 80px;
+            background-color: #fbf8f4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px auto;
+        }
+        .checkmark { 
+            font-size: 35px; 
+            color: #b89262; 
+            font-weight: 300;
+        }
+        .thankyou-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: 32px;
+            color: #2c2c2c;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .success-message {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.8;
+            font-weight: 300;
+            margin: 20px 0 35px 0;
+        }
+        .btn-continue { 
+            background-color: #2c2c2c; 
+            color: #fff; 
+            border-radius: 0; 
+            padding: 14px 35px; 
+            display: inline-block; 
+            text-decoration: none; 
+            font-size: 12px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid #2c2c2c;
+        }
+        .btn-continue:hover { 
+            background-color: transparent; 
+            color: #2c2c2c; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="success-card">
+        <div class="brand-title">The Designer Closet</div>
+        
+        <div class="checkmark-wrapper">
+            <div class="checkmark">✓</div>
+        </div>
+        
+        <h2 class="thankyou-heading">Thank You</h2>
+        
+        <p class="success-message">
+            Your order for <strong>{{ product.name }}</strong> has been placed successfully.<br>
+            Our team will contact you shortly on your provided phone number for confirmation.
+        </p>
+        
+        <a href="/" class="btn btn-continue text-uppercase">Continue Shopping</a>
+    </div>
+
+</body>
+</html>

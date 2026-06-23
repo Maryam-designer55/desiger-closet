@@ -1,0 +1,40 @@
+<!-- store/templates/store/order_success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - The Designer Closet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #fcfbfa; font-family: 'Montserrat', sans-serif; color: #2c2c2c; }
+        .success-card { background: #fff; border: 1px solid #f1eeea; padding: 50px; margin-top: 100px; box-shadow: 0 4px 20px rgba(0,0,0,0.02); text-align: center; }
+        .success-title { font-family: 'Playfair Display', serif; letter-spacing: 2px; text-transform: uppercase; color: #b89262; }
+        .btn-continue { background-color: #2c2c2c; color: #fff; border-radius: 0; padding: 12px 30px; font-weight: 600; letter-spacing: 2px; font-size: 12px; border: 1px solid #2c2c2c; text-transform: uppercase; text-decoration: none; display: inline-block; transition: 0.3s; }
+        .btn-continue:hover { background-color: #b89262; border-color: #b89262; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="success-card">
+                <div class="mb-4">
+                    <!-- Gold Checkmark Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="#b89262" class="bi bi-check2-circle" viewBox="0 0 100 100">
+                        <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                        <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                    </svg>
+                </div>
+                <h2 class="success-title mb-3">Thank You For Your Shopping!</h2>
+                <p class="text-muted mb-4">Your order has been successfully placed. We will contact you soon for confirmation.</p>
+                <a href="/" class="btn btn-continue">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

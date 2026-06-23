@@ -1,0 +1,98 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    body { background-color: #fcfbfa; font-family: 'Montserrat', sans-serif; color: #2c2c2c; }
+    .cart-header { font-family: 'Playfair Display', serif; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; }
+    .table-luxury { background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.02); border: 1px solid #f1eeea; }
+    .table-luxury th { font-family: 'Playfair Display', serif; font-weight: 600; text-transform: uppercase; font-size: 14px; letter-spacing: 1px; background-color: #fbf8f4; border: none; padding: 15px; }
+    .table-luxury td { vertical-align: middle; padding: 20px 15px; border-bottom: 1px solid #f1eeea; }
+    .btn-remove { color: #888; text-decoration: none; font-size: 13px; transition: 0.3s; }
+    .btn-remove:hover { color: #c13535; }
+    .summary-card { background: #fff; padding: 30px; border: 1px solid #f1eeea; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+    .btn-checkout { background-color: #2c2c2c; color: #fff; border-radius: 0; width: 100%; padding: 12px; font-weight: 600; letter-spacing: 2px; font-size: 12px; border: 1px solid #2c2c2c; transition: 0.3s; text-decoration: none; display: block; text-align: center; }
+    .btn-checkout:hover { background-color: transparent; color: #2c2c2c; }
+    
+    /* Plus Minus Quantity Styling */
+    .quantity-control { display: flex; align-items: center; border: 1px solid #e2deda; width: fit-content; background: #fff; }
+    .quantity-btn { background: none; border: none; padding: 5px 12px; font-size: 16px; color: #2c2c2c; cursor: pointer; transition: 0.2s; text-decoration: none; }
+    .quantity-btn:hover { background-color: #fbf8f4; }
+    .quantity-value { padding: 5px 15px; font-size: 14px; font-weight: 600; border-left: 1px solid #e2deda; border-right: 1px solid #e2deda; min-width: 40px; text-align: center; }
+</style>
+
+<div class="container my-5">
+    <h2 class="text-center cart-header">Your Shopping Bag</h2>
+    
+    {% if cart_items %}
+    <div class="row g-4">
+        <!-- Cart Items List -->
+        <div class="col-lg-8">
+            <div class="table-responsive">
+                <table class="table table-luxury align-middle">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                        <tr>
+                            <td>
+                                <h6 class="mb-0" style="font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600;">{{ item.product.name }}</h6>
+                            </td>
+                            <td>Rs. {{ item.product.price }}</td>
+                            <td>
+                                <!-- Quantity controls with Plus and Minus links -->
+                                <div class="quantity-control">
+                                    <a href="{% url 'update_cart' item.product.id 'minus' %}" class="quantity-btn">-</a>
+                                    <span class="quantity-value">{{ item.quantity }}</span>
+                                    <a href="{% url 'update_cart' item.product.id 'plus' %}" class="quantity-btn">+</a>
+                                </div>
+                            </td>
+                            <td><strong>Rs. {{ item.subtotal }}</strong></td>
+                            <td>
+                                <a href="{% url 'remove_from_cart' item.product.id %}" class="btn-remove">✕ Remove</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Order Summary Side Panel -->
+        <div class="col-lg-4">
+            <div class="summary-card">
+                <h5 class="fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Order Summary</h5>
+                <div class="d-flex justify-content-between mb-3">
+                    <span class="text-muted">Total Items:</span>
+                    <span>{{ cart_total_count }}</span>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between mb-4">
+                    <span class="fw-bold">Total Amount:</span>
+                    <span class="fw-bold text-dark" style="font-size: 18px;">Rs. {{ total_price }}</span>
+                </div>
+                
+                <a href="{% url 'checkout' %}" class="btn-checkout text-uppercase mb-3">Proceed to Checkout</a>
+                <a href="/" class="btn btn-outline-secondary rounded-0 w-100 btn-sm text-uppercase" style="font-size: 11px; letter-spacing: 1px; padding: 10px;">Add More Items</a>
+            </div>
+        </div>
+    </div>
+    
+    {% else %}
+    <!-- Empty Cart State -->
+    <div class="text-center py-5">
+        <p class="text-muted fs-5 mb-4">Your bag is currently empty.</p>
+        <div class="d-flex justify-content-center">
+            <a href="/" class="btn-checkout text-uppercase" style="max-width: 300px;">Continue Shopping</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
